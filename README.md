@@ -8,7 +8,7 @@ Need JQuery http://jquery.com/download/
 #### 1. First need connect jquery.showbyscroll plugin
 
 ```html
-<script src=”jquery.showbyscroll.js”></script>
+<script src=”jquery.showbyscroll.min.js”></script>
 ```
 
 #### 2. Initialization function for the desired element
@@ -20,5 +20,5 @@ $(function() {
 	});
 });
 ```
-<b>class</b> - which class add when the object is visible (default: "show");
-<b>offsetIndex</b> - screen height divided by the Index (default: 2).
+**class** - which class add when the object is visible (default: "show");.
+**offsetIndex** - screen height divided by the Index (default: 2).
