@@ -20,5 +20,5 @@ $(function() {
 	});
 });
 ```
-**class** - which class add when the object is visible (default: "show");.
-**offsetIndex** - screen height divided by the Index (default: 2).
+- **class** - which class add when the object is visible (default: "show");
+- **offsetIndex** - screen height divided by the Index (default: 2).
