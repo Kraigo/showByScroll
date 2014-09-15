@@ -15,7 +15,7 @@
 		function check_item() {
 			settings.obj.each(function() {
 				if ( $(this).offset().top < scrollOffset() ) {
-					$(this).addClass( settings.name );
+					$(this).addClass( settings.name ).trigger('showedByScroll');
 					settings.obj = settings.obj.not( $(this) );
 				};
 			});
