@@ -22,3 +22,10 @@ $(function() {
 ```
 - **class** - which class add when the object is visible (default: "show");
 - **offsetIndex** - screen height divided by the Index (default: 2).
+
+#### 3. Trigger for added class and element showed
+```javascript
+$( '.showbyscroll' ).on('showedByScroll', function() {
+	console.log('element.trigger("showedByScroll")')
+});
+```
