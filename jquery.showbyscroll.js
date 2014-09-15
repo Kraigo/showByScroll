@@ -5,7 +5,8 @@
 		var settings = $.extend({
 			'obj' : $(this),
 			'name' : 'show',
-			'offsetIndex' : 2
+			'offsetIndex' : 2,
+			'onlyView': false
 		}, options );
 
 		function scrollOffset() {
@@ -14,11 +15,28 @@
 
 		function check_item() {
 			settings.obj.each(function() {
-				if ( $(this).offset().top < scrollOffset() ) {
-					$(this).addClass( settings.name ).trigger('showedByScroll');
-					settings.obj = settings.obj.not( $(this) );
+				if (settings.onlyView) {
+					if ( $(this).offset().top < scrollOffset() &&
+						 $(this).offset().top+$(this).height() > $(window).scrollTop() ) {
+
+						show_item($(this));
+
+					}
+
+				}
+				else {
+					if ( $(this).offset().top < scrollOffset() ) {
+
+						show_item($(this));
+
+					}
 				};
 			});
+		}
+
+		function show_item(t) {
+			t.addClass( settings.name ).trigger('showedByScroll');
+			settings.obj = settings.obj.not( t );
 		}
 		
 		check_item();

@@ -16,12 +16,14 @@ Need JQuery http://jquery.com/download/
 $(function() {
 	$( '.showbyscroll' ).showByScroll({
 		'class': 'show',
+		'onlyView': false,
 		'offsetIndex': 1.5
 	});
 });
 ```
-- **class** - which class add when the object is visible (default: "show");
-- **offsetIndex** - screen height divided by the Index (default: 2).
+- **class** *[string]* - which class add when the object is visible (default: "show");
+- **onlyView** *[boolean]* - handle the items above viewport? (default: false)
+- **offsetIndex** *[float]* - screen height divided by the Index (default: 2).
 
 #### 3. Trigger for added class and element showed
 ```javascript
