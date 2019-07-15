@@ -1,33 +1,58 @@
 Show by scroll
 ========
 
-JQuery plugin for display blocks by scrolling window
+Plugin for display items when scrolling down and appearing item on the screen.
 
-Need JQuery http://jquery.com/download/
+**Supported JQuery** but available vanilla js way.
 
-#### 1. First need connect jquery.showbyscroll plugin
+#### 1. Include script
 
 ```html
-<script src=”jquery.showbyscroll.min.js”></script>
+<script src=”show-by-scroll.min.js”></script>
 ```
 
 #### 2. Initialization function for the desired element
+
 ```javascript
+// Vanilla Javascript
+
+const elements = document.querySelectorAll('.showbyscroll');
+const options = {
+    className: 'show',
+    offsetIndex: 1.5
+};
+
+new ShowByScroll(elements, options);
+```
+
+```javascript
+// jQuery
+
 $(function() {
-	$( '.showbyscroll' ).showByScroll({
-		'class': 'show',
-		'onlyView': false,
-		'offsetIndex': 1.5
-	});
+    $('.showbyscroll').showByScroll({
+        className: 'show',
+        offsetIndex: 1.5
+    });
 });
 ```
-- **class** *[string]* - which class add when the object is visible (default: "show");
-- **onlyView** *[boolean]* - handle the items above viewport? (default: false)
-- **offsetIndex** *[float]* - screen height divided by the Index (default: 2).
+- **className** *[string]* - what class will be added when the item is visible (default: "show");
+- **offsetIndex** *[number]* - percentage of screen causing the event (default: 1).
+<s>**onlyView** *[boolean]* - handle the items above viewport? (default: false)</s>
 
 #### 3. Trigger for added class and element showed
 ```javascript
-$( '.showbyscroll' ).on('showedByScroll', function() {
-	console.log('element.trigger("showedByScroll")')
+// Vanilla Javascript
+
+const element = document.querySelector('.showbyscroll');
+element.addEventListener('showedByScroll', function() {
+    // when element triggered 
+})
+```
+
+```javascript
+// jQuery
+
+$('.showbyscroll').on('showedByScroll', function() {
+    // when element triggered 
 });
 ```

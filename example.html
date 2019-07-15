@@ -11,7 +11,7 @@
 <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 
 <!-- link to JQuery.showbyscroll -->
-<script src="jquery.showbyscroll.js"></script>
+<script src="show-by-scroll.js"></script>
 
 <style>
 * { margin:0; padding:0 }
@@ -36,14 +36,14 @@ a {color: #000;text-decoration: none;}
 $(function() {
 
 	$( '.showbyscroll' ).on('showedByScroll', function() {
-		console.log('element.trigger("showedByScroll")')
+		console.log('Triggered showedByScroll Event')
 	});
 
 	$( '.showbyscroll' ).showByScroll({
-			'class': 'show',
-			'offsetIndex': 1.5,
-			'onlyView': true
-		});
+		'class': 'show',
+		'offsetIndex': 0.5,
+		'onlyView': true
+	});
 });
 </script>
 
