@@ -38,6 +38,7 @@ $(function() {
 - **className** *[string]* - what class will be added when the item is visible (default: "show");
 - **offsetIndex** *[number]* - percentage of screen causing the event (default: 1).
 <s>**onlyView** *[boolean]* - handle the items above viewport? (default: false)</s>
+- **delay** *[number]* - it will push element to queue and appears one by one (default: 0).
 
 #### 3. Trigger for added class and element showed
 ```javascript

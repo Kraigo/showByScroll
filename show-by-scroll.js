@@ -12,8 +12,12 @@ function ShowByScroll(elm, options) {
     this.settings = Object.assign({
         elements: elements,
         className: 'show',
-        offsetIndex: 0.8
+        offsetIndex: 0.8,
+        delay: 0
     }, options);
+
+    this.queue = [];
+    this.queueTimeout = null;
 
     this.bindScroll();
     this.checkItems();
@@ -45,7 +49,12 @@ ShowByScroll.prototype.checkItems = function() {
         if (scrollOffset > elementOffset &&
             elementOffset + elementHeight > window.scrollY
         ) {
-            that.showItem(element);
+
+            if (that.settings.delay > 0) {
+                that.addToQueue(element);
+            } else {
+                that.showItem(element);
+            }
         }
 
         count ++;
@@ -62,4 +71,29 @@ ShowByScroll.prototype.showItem = function(element) {
     var event = new Event('showedByScroll');
     element.classList.add(settings.className);
     element.dispatchEvent(event);
+}
+
+ShowByScroll.prototype.addToQueue = function(element) {
+    if (this.queue.indexOf(element) < 0) {
+        this.queue.push(element);
+        if (!this.queueTimeout) {
+            this.waitQueue();
+        }
+    }
+}
+
+ShowByScroll.prototype.waitQueue = function() {
+    var that = this;
+    this.queueTimeout = setTimeout(function() {
+        var firstElement = that.queue[0];
+        that.showItem(firstElement);
+        that.queue.shift();
+
+        if (that.queue.length) {
+            that.waitQueue();
+        } else {
+            that.queueTimeout = null;
+        }
+
+    }, that.settings.delay);
 }
